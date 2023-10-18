@@ -125,3 +125,23 @@ return this->nt;
 void Polinomio_m::Mostrar(){
     mem->Mostrar();
 }
+
+void Polinomio_m::derivada(){
+int n = numero_terminos();
+	int* exn = new int[n];
+	int* con = new int[n];
+	int c = 0;
+	while (!es_cero()) {
+		int ex = exponente(1);
+		int co = coeficiente(ex);
+		poner_termino(-co, ex);
+		exn[c] = ex;
+		con[c] = co;
+		c++;
+	}
+	for (int i = 0; i < n; i++) {
+		int ex = exn[i];
+		int co = con[i];
+		poner_termino(co*ex, ex - 1);
+	}
+}

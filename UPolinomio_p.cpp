@@ -60,11 +60,19 @@ return 0;
 }
 
 int Polinomio_p::coeficiente(int exp){
-direccion_p dir;
+direccion_p dir = buscar_exponente(exp);
 	if (dir != NULL) {
 		return pol->recuperar(pol->anterior(dir));
 	}
-	return 0;
+return 0;
+}
+
+int Polinomio_p::exponente(int nter){
+direccion_p dir = buscar_termino_n(nter);
+	if (dir != NULL) {
+		return pol->recuperar(pol->siguiente(dir));
+	}
+return 0;
 }
 
 void Polinomio_p::asignar_coeficiente(int coef, int exp){
@@ -94,14 +102,6 @@ direccion_p dir_exp;
 
 int Polinomio_p::numero_terminos(){
 return pol->longitud() / 2;
-}
-
-int Polinomio_p::exponente(int nter){
-direccion_p dir = buscar_termino_n(nter);
-	if (dir != NULL) {
-		return pol->recuperar(pol->siguiente(dir));
-	}
-return 0;
 }
 
 void Polinomio_p::sumar(Polinomio_p *p1, Polinomio_p *p2){
@@ -162,4 +162,8 @@ string Polinomio_p::convertir_string() {
 		s += to_string(co) + "x^" + to_string(ex);
 	}
 	return s;
+}
+
+void Polinomio_p::Mostrar(){
+
 }

@@ -7,6 +7,7 @@
 #include "UListaS.h"
 #include "UListaV.h"
 #include "UPolinomio_CSMemoria.h"
+#include "UPolinomio_p.h"
 
 using namespace std;
 
@@ -15,6 +16,7 @@ void MenuLista_CSMemoria();
 void MenuLista_p();
 void MenuLista_v();
 void MenuPolinomio_CSMemoria();
+void MenuPolinomio_p();
 void MenuConjuntoLista();
 void Menu();
 
@@ -327,11 +329,7 @@ int opcion, coef, exp;
 cout << "1. Crear Lista" << endl;
 cout << "2. Insertar" << endl;
 cout << "3. Mostrar" << endl;
-cout << "4. o" << endl;
-cout << "5. " << endl;
-cout << "6. I" << endl;
-cout << "7. Mo" << endl;
-cout << "8. Salir" << endl;
+cout << "4. Salir" << endl;
 	do {
 	cout << "Opcion: ";
 	cin >> opcion;
@@ -350,10 +348,42 @@ cout << "8. Salir" << endl;
 				pol->Mostrar();
 			} break;
 			case 4: {
-
+				cout << "PROGRAMA FINALIZADO";
 			} break;
 		default:
-			;
+			cout << "ERRO/Fuera de rango, intentar de nuevo: " << endl;
 		}
-	} while (opcion != 8);
+	} while (opcion != 4);
+}
+
+void MenuPolinomio_p(){
+int opcion, coef, exp;
+cout << "1. Crear Lista" << endl;
+cout << "2. Insertar" << endl;
+cout << "3. Mostrar" << endl;
+cout << "4. Salir" << endl;
+	do {
+	cout << "Opcion: ";
+	cin >> opcion;
+		switch (opcion) {
+			case 1: {
+				pol = new Polinomio_p;
+			} break;
+			case 2: {
+				cout << "Insertar coeficiente: ";
+				cin >> coef; cout << "\n";
+				cout << "Insertar exponente: ";
+				cin >> exp; cout << "\n";
+				pol->poner_termino(coef, exp);
+			} break;
+			case 3: {
+
+			} break;
+			case 4: {
+				cout << "PROGRAMA FINALIZADO";
+			} break;
+		default:
+            cout << "ERRO/Fuera de rango, intentar de nuevo: " << endl;
+		}
+	} while (opcion != 4);
 }

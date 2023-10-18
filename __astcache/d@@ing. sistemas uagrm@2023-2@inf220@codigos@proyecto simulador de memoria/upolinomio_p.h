@@ -16,14 +16,15 @@ class Polinomio_p {
 		bool es_cero();
 		int grado();
 		int coeficiente(int exp);
+		int exponente(int nter);
 		void asignar_coeficiente(int coef, int exp);
 		void poner_termino(int coef, int exp);
 		int numero_terminos();
-		int exponente(int nter);
 		void sumar(Polinomio_p *p1, Polinomio_p *p2);
 		void restar(Polinomio_p *p1, Polinomio_p *p2);
 		void multiplicar(Polinomio_p p1, Polinomio_p p2);
 		void derivar();
-        string convertir_string();
+		string convertir_string();
+		void Mostrar();
 };
 #endif

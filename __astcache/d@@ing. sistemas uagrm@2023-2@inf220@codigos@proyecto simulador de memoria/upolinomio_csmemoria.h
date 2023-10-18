@@ -33,6 +33,7 @@ class Polinomio_m {
 		void poner_termino(int coef, int exp);
 		int numero_terminos();
 		int exponente(int nroter);
-        void Mostrar();
+		void derivada();
+		void Mostrar();
 };
 #endif
