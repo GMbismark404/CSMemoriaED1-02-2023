@@ -1,0 +1,36 @@
+//---------------------------------------------------------------------------
+#ifndef UMemoriaH
+#define UMemoriaH
+#include <iostream>
+#include <string>
+
+using namespace std;
+//---------------------------------------------------------------------------
+const int max = 20;
+const int nulo = -1;
+
+struct NodoM{
+	int dato;
+	string id;
+	int link;
+};
+
+class CSMemoria{
+	private:
+		NodoM *mem;
+		int libre;
+	public:
+		CSMemoria();
+		int new_espacio(string cadena);
+		int numero_ids(string id);
+		string obtener_id(string cad, int i);
+		void delete_espacio(int dir);
+		int espacio_disponible();
+		bool dir_libre(int dir);
+		int obtener_dato(int dir, string cadena_id);
+		void eliminar_flecha(string cad_id);
+        int espacio_ocupado();
+};
+
+
+#endif

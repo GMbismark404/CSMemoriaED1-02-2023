@@ -1,0 +1,67 @@
+//---------------------------------------------------------------------------
+#pragma hdrstop
+#include "UMemoria.h"
+
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+CSMemoria::CSMemoria(){
+	mem = new NodoM[max];
+	for (int i = 0; i < max; i++) {
+		mem[i].link = i + 1;
+	}
+	mem[max - 1].link = -1;
+	libre = 0;
+}
+
+int CSMemoria::new_espacio(string cad){
+	int cant = 2;
+	int dir = libre;
+	int d = libre;
+	for (int i = 0; i < cant - 1; i++) {
+		mem[d].id = "cadena";
+		d = mem[d].link;
+	}
+
+	libre = mem[d].link;
+	mem[d].link = -1;
+//    mem[d].id = obtener_id(cad, cant);
+}
+
+int CSMemoria::numero_ids(string id){
+int c = 0;
+	for (int i = 0; i < id.length(); i++) {
+		if ((id[i] != ',') && (id[i+1] == ',')) {
+			c++;
+		}
+	}
+
+	if (id[id.length()] != ',') {
+		c++;
+	}
+}
+
+string CSMemoria::obtener_id(string cad, int i){
+int j = 1; int c = 1;
+string s = "";
+	if (i == 1){
+		while (cad[j] != ','){
+			s = s + cad[j];
+			j++;
+		}
+	}else{
+		while (i == c){
+			if ((cad[j] != ',') && (cad[j+1] == ',')) {
+				c++; j++;
+			}
+		j++;
+		}
+
+		while (cad[j] != ','){
+			s = s + cad[j];
+			j++;
+		}
+	}
+return s;
+}
+

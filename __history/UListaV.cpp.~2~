@@ -1,0 +1,163 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "UListaV.h"
+//---------------------------------------------------------------------------
+ListaV::ListaV() {
+	this->cantidad = 0;
+	elementos = new int[max];
+}
+
+direccionI ListaV::fin() {
+	if (!vacio())
+		return cantidad - 1;
+	else
+		cout << "ERROR: LISTA VACIA\n";
+}
+
+direccionI ListaV::primero() {
+	if (!vacio())
+		return 0;
+	else
+		cout << "ERROR: LISTA VACIA\n";
+}
+
+direccionI ListaV::siguiente(direccion dir) {
+	if (vacio())
+		cout << "ERROR: LISTA VACIA\n";
+	else {
+		if (dir == cantidad - 1)
+			cout << "ERROR: DIRECCION ERRONEA\n";
+		else
+			return dir + 1;
+	}
+}
+
+direccionI ListaV::anterior(direccion dir) {
+	if (vacio())
+		cout << "ERROR: LISTA VACIA\n";
+	else {
+		if (dir > 0 && dir <= cantidad - 1)
+			return dir - 1;
+		else
+			cout << "ERROR: DIRECCION ERRONEA\n";
+	}
+}
+
+bool ListaV::vacio() {
+	return cantidad == 0;
+}
+
+int ListaV::recupera(direccion dir) {
+	if (vacio())
+		cout << "ERROR: LISTA VACIA\n";
+	else {
+		if (dir >= 0 && dir <= cantidad - 1)
+			return elementos[dir];
+		else
+			cout << "ERROR: DIRECCION ERRONEA\n";
+	}
+}
+
+int ListaV::longitud() {
+	return cantidad;
+}
+
+void ListaV::inserta(direccion dir, int e) {
+	if (cantidad == max) {
+		cout << "ERROR: LISTA LLENA\n";
+		return;
+	}
+	if (vacio()) {
+		elementos[0] = e;
+		cantidad++;
+		return;
+	}
+	if (dir >= 0 && d <= cantidad - 1) {
+		for (int i = cantidad; i > dir; i--)
+			elementos[i] = elementos[i - 1];
+		elementos[dir] = e;
+		cantidad++;
+	}
+	else
+		cout << "ERROR: DIRECCION ERRONEA\n";
+}
+
+void ListaV::inserta_primero(int e) {
+	if (cantidad == MAXL) {
+		cout << "ERROR: LISTA LLENA\n";
+		return;
+	}
+	for (int i = cantidad; i > 0; i--)
+		elementos[i] = elementos[i - 1];
+	elementos[0] = e;
+	cantidad++;
+}
+
+void ListaV::inserta_ultimo(int e) {
+	if (cantidad == max)
+		cout << "ERROR: LISTA LLENA\n";
+	else {
+		elementos[cantidad] = e;
+		cantidad++;
+	}
+}
+
+void ListaV::suprime(direccion dir) {
+	if (cantidad == 0) {
+		cout << "ERROR: LISTA VACIA\n";
+		return;
+	}
+	if (dir >= 0 && d <= cantidad - 1) {
+		for (int i = dir; i < cantidad - 1; i++)
+			elementos[i] = elementos[i + 1];
+		cantidad--;
+	}
+	else
+		cout << "ERROR: DIRECCION ERRONEA\n";
+}
+
+void ListaV::modifica(direccion dir, int e) {
+	if (cantidad == 0) {
+		cout << "ERROR: LISTA VACIA\n";
+		return;
+	}
+	if (dir >= 0 && dir <= cantidad - 1)
+		elementos[dir] = e;
+	else
+		cout << "ERROR: DIRECCION ERRONEA\n";
+}
+
+string ListaV::to_str() {
+	string s = "[";
+	for (int i = 0; i < cantidad; i++) {
+		s += to_string(elementos[i]);
+		if (i < cantidad - 1)
+			s += ",";
+	}
+	return s + "]";
+}
+
+direccionI ListaV::localiza(int e) {
+	for(int i = 0;i < cantidad;i++){
+		if(elementos[i] == e)
+			return i;
+	}
+	return -1;
+}
+
+void ListaV::elimina_dato(int e) {
+	int i = 0;
+	while(i < cantidad){
+		if(elementos[i] == e)
+			suprime(i);
+		else
+			i++;
+	}
+}
+
+void ListaV::anula() {
+	cantidad = 0;
+
+#pragma package(smart_init)

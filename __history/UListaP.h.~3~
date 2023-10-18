@@ -1,0 +1,29 @@
+//---------------------------------------------------------------------------
+
+#ifndef UListaPH
+#define UListaPH
+#include <iostream>
+#include <string>
+
+using namespace std;
+//---------------------------------------------------------------------------
+const nulo = 0;
+
+struct NodoL{
+	int elemento;
+	NodoL *sig;
+};
+
+typedef NodoL *direccionP;
+
+class ListaP{
+	private:
+		NodoL *PtrElementos;
+		int distancia;
+	public:
+		ListaP();
+		NodoL *fin();
+		bool vacia();
+		int Longitud();
+};
+#endif

@@ -1,0 +1,33 @@
+//---------------------------------------------------------------------------
+
+#ifndef UListaCSMemoriaH
+#define UListaCSMemoriaH
+#include "UMemoria.h"
+//---------------------------------------------------------------------------
+struct Nodo{
+	int elemento;
+	Nodo *sig;
+};
+
+typedef Nodo *dir_puntero;
+
+class ListaCSMemoria {
+	private:
+		dir_puntero ptr;
+		int cantidad;
+	public:
+		ListaCSMemoria();
+		dir_puntero primero();
+		dir_puntero fin();
+		dir_puntero siguiente(dir_puntero dir);
+		dir_puntero anterior(dir_puntero dir);
+		bool vacia();
+		int recupera(dir_puntero dir);
+		int longitud();
+		void inserta(dir_puntero elemento);
+		void inserta_primero(int elemento);
+		void inserta_ultimo(int elemento);
+		void suprime(dir_puntero dir);
+        void modifica(dir_puntero dir, int elemento);
+};
+#endif

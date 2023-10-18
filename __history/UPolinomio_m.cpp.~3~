@@ -1,0 +1,64 @@
+//---------------------------------------------------------------------------
+
+#pragma hdrstop
+
+#include "UPolinomio_m.h"
+//---------------------------------------------------------------------------
+#pragma package(smart_init)
+
+Polinomio_m::Polinomio_m() {
+	this->nt = 0;
+	ptr_poli = nulo;
+	mem = new CSMemoria();
+}
+
+direccion_m Polinomio_m::buscar_exponente(int exp){  //5
+direccion_m dir = this->ptr_poli;
+	if (dir != nulo) {
+		int dir_exp = nulo;
+		while ((dir != nulo) && (dir_exp == nulo)) {
+			if (mem->obtener_dato(dir, expp) == exp)
+				dir_exp = dir;
+			dir = mem->obtener_dato(dir,sigp);
+		}
+		return dir_exp;
+	}
+return nulo;
+}
+
+direccion_m Polinomio_m::buscar_termino_n(int i){
+direccion_m dir = this->ptr_poli;
+	if (dir != nulo) {
+		direccion_m dir_ter = nulo;
+		this->nt = 0;
+		while ((dir != nulo) && (dir_ter == nulo)){
+			this->nt += 1;
+			if (this->nt == i) {
+				dir_ter = dir;
+			}
+		}
+
+	}
+}
+
+bool Polinomio_m::es_cero() {
+	return nt == 0;
+}
+
+int Polinomio_m::grado() {
+int dir = this->ptr_poli;
+	if (dir != nulo) {
+		int maxg = mem->obtener_dato(dir, expp);  //5
+		while (dir != nulo) {
+			if (mem->obtener_dato(dir,expp) > maxg)
+				maxg = mem->obtener_dato(dir,expp);
+			dir = mem->obtener_dato(dir,sigp);
+		}
+		return maxg;
+	}
+}
+
+int Polinomio_m::coeficiente(int coef, int exp){
+int dir = buscar_exponente(exp);
+
+}

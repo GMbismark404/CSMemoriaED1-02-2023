@@ -1,0 +1,12 @@
+//---------------------------------------------------------------------------
+
+#ifndef UListaPH
+#define UListaPH
+#include <iostream>
+#include <string>
+
+using namespace std;
+//---------------------------------------------------------------------------
+const max = 100;
+const nulo = 0;
+#endif
